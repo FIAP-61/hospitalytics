@@ -54,5 +54,5 @@ with tab0:
 
 
 if 'df_data' not in st.session_state:
-    st.session_state.df_data = pd.read_csv(r".\Source\pnad_covid.csv", sep=",")
+    st.session_state.df_data = pd.read_csv("pnad_covid.csv", sep=",")
         
