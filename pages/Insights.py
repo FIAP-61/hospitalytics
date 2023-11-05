@@ -8,10 +8,10 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 
-st.header("Titulo")
+st.header("Insights Extraídos")
 
 # Layout do aplicativo
-tab0, tab1, tab2 = st.tabs(["Distribuição Grupos de Risco", "Plano de Saúde", "Atendimento"])
+tab0, tab1, tab2 = st.tabs(["Distribuição Grupos de Risco", "Distribuição de Plano de Saúde", "Preferências de Atendimento"])
 
 # Dados
 if 'df_data' not in st.session_state:
@@ -79,7 +79,37 @@ with tab0:
 
 
     with col2:
-        st.markdown("""Texto explicando categorização do grupo de risco...""")
+        st.markdown("""Texto explicando categorização do grupo de risco e o gráfico...""")
+
+    st.divider()
+
+    col1, col2= st.columns(2)
+    with col1:
+        stayed_home = st.session_state.df_data[st.session_state.df_data['ficou_em_casa'] == 1]['risk_group'].value_counts()
+        stayed_home_title = ['Não é de Grupo de Risco', 'É do Grupo de Risco']
+
+        fig = px.pie(values=stayed_home, names=stayed_home_title, hole=.3)
+        fig.update_traces(textfont_size=20)
+        fig.update_layout(title_text="Pessoas que tiveram sintomas mas permaneceram em casa")
+        st.plotly_chart(fig, use_container_width=True)
+    
+    with col2:
+        st.markdown("""Texto Explicando.....""")
+    
+    st.divider()
+
+    col1, col2= st.columns(2)
+    with col1:
+        st.markdown("""Texto Explicando.....""")
+    
+    with col2:
+        auto_medication = st.session_state.df_data[st.session_state.df_data['auto_medicacao'] == 1]['risk_group'].value_counts()
+        auto_medication_title = ['Não é de Grupo de Risco', 'É do Grupo de Risco']
+
+        fig = px.pie(values=auto_medication, names=auto_medication_title, hole=.3)
+        fig.update_traces(textfont_size=20)
+        fig.update_layout(title_text="Pessoas que tiveram sintomas e se auto medicaram")
+        st.plotly_chart(fig, use_container_width=True)
 
 
 with tab1:
@@ -160,21 +190,34 @@ with tab2:
         fig.update_xaxes(tickvals=['buscou_atendimento_posto_ubs_esf', 'buscou_atendimento_ps_sus_upa', 'buscou_atendimento_hospital_sus'], ticktext=['UBS - ESF', 'PS (SUS, UPA)', 'SUS'])
     st.plotly_chart(fig, use_container_width=True)
 
+    st.markdown("""Texto explicando gráfico acima...""")
+
+    st.divider()
+
     col1, col2= st.columns(2)
     with col1:
-        stayed_home = st.session_state.df_data[st.session_state.df_data['ficou_em_casa'] == 1]['risk_group'].value_counts()
-        stayed_home_title = ['Não é de Grupo de Risco', 'É do Grupo de Risco']
+        stayed_hospitalized = st.session_state.df_data[st.session_state.df_data['ficou_internado'] != 9]['ficou_internado'].value_counts()
+        stayed_hospitalized_title = ['Não ficou internado', 'Ficou internado por um dia ou mais', 'Não foi atendido']
 
-        fig = px.pie(values=stayed_home, names=stayed_home_title, hole=.3)
+        fig = px.pie(values=stayed_hospitalized, names=stayed_hospitalized_title, hole=.3)
         fig.update_traces(textfont_size=20)
-        fig.update_layout(title_text="Pessoas que tiveram sintomas mas permaneceram em casa")
+        fig.update_layout(title_text="Pessoas que tiveram que ser internadas")
         st.plotly_chart(fig, use_container_width=True)
     
     with col2:
-        auto_medication = st.session_state.df_data[st.session_state.df_data['auto_medicacao'] == 1]['risk_group'].value_counts()
-        auto_medication_title = ['Não é de Grupo de Risco', 'É do Grupo de Risco']
+        st.markdown("""Texto Explicando.....""")
+    
+    st.divider()
 
-        fig = px.pie(values=auto_medication, names=auto_medication_title, hole=.3)
+    col1, col2= st.columns(2)
+    with col1:
+        st.markdown("""Texto Explicando.....""")
+    
+    with col2:
+        risk_hospitalized = st.session_state.df_data[st.session_state.df_data['internado_risco'] != 9]['internado_risco'].value_counts()
+        risk_hospitalized_title = ['Não', 'Sim']
+
+        fig = px.pie(values=risk_hospitalized, names=risk_hospitalized_title, hole=.3)
         fig.update_traces(textfont_size=20)
-        fig.update_layout(title_text="Pessoas que tiveram sintomas e se auto medicaram")
+        fig.update_layout(title_text="Pessoas que durante a internação, foram sedadas, entubadas e colocadas em respiração artificial com ventilador")
         st.plotly_chart(fig, use_container_width=True)
