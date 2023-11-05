@@ -31,12 +31,9 @@ with tab0:
 
     st.markdown(
     """
-    ### Base de Dados
-    Descrever base de dados utilizada
-    #
-
-    ### Transformação
-    Foi utilizado o databricks para a leitura, tratamento e criação da tabela com o pyspark, utilizando as bases do PNAN Covid referentes aos meses de setembro, outubro e novembro de 2020.  
+    ### Base de Dados &  Transformação
+    Os dados foram ingeridos dentro do sistema de DBFS (Sistema de Arquivos do Databricks).   
+    Com o pyspark dentro do databricks foi possível criar a tabela final para o streamlit consumir os dados, fazendo diversos tratamentos e utilizando as bases do PNAN Covid referentes aos meses de setembro, outubro e novembro de 2020.  
     Acesse o link para visualizar o notebook.    
     [Databricks Notebook ↗](https://databricks-prod-cloudfront.cloud.databricks.com/public/4027ec902e239c93eaaa8714f173bcfc/5375801336056031/59063656447375/8314753084412668/latest.html)
     #
@@ -49,10 +46,12 @@ with tab0:
     Por uma limitação do databricks community não é possível criar um "personal access token" para a consulta da tabela pelo streamlit, portanto utilizaremos a exportação dessa tabela para o streamlit ingerir os dados, caso contrário seria possível conectar ao databricks pelo código na imagem abaixo.
     """
     )
-
-    st.image("Images/databricks_connection.png")
+    with st.expander("Clique para ver o código de conexão"):
+        st.image("Images/databricks_connection.png")
 
 
 if 'df_data' not in st.session_state:
-    st.session_state.df_data = pd.read_csv("pnad_covid.csv", sep=",")
+    df1 = pd.read_csv('pnad_covid_1.csv', sep=',')
+    df2 = pd.read_csv('pnad_covid_2.csv', sep=',')
+    st.session_state.df_data = pd.concat([df1, df2], axis=0, ignore_index=True)
         

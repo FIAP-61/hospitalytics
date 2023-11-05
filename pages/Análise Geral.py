@@ -13,7 +13,9 @@ tab0, tab1 = st.tabs(["Análise de Respostas", "Análise da Idade"])
 
 # Dados
 if 'df_data' not in st.session_state:
-    st.session_state.df_data = pd.read_csv("pnad_covid.csv", sep=",")
+    df1 = pd.read_csv('pnad_covid_1.csv', sep=',')
+    df2 = pd.read_csv('pnad_covid_2.csv', sep=',')
+    st.session_state.df_data = pd.concat([df1, df2], axis=0, ignore_index=True)
 
 # Transform
 uf_dict = {11: 'Rondônia', 12: 'Acre', 13: 'Amazonas', 14: 'Roraima', 15: 'Pará', 16: 'Amapá', 17: 'Tocantins', 21: 'Maranhão', 22: 'Piauí', 23: 'Ceará', 24: 'Rio Grande do Norte', 25: 'Paraíba', 26: 'Pernambuco', 27: 'Alagoas', 28: 'Sergipe', 29: 'Bahia', 31: 'Minas Gerais', 32: 'Espírito Santo', 33: 'Rio de Janeiro', 35: 'São Paulo', 41: 'Paraná', 42: 'Santa Catarina', 43: 'Rio Grande do Sul', 50: 'Mato Grosso do Sul', 51: 'Mato Grosso', 52: 'Goiás', 53: 'Distrito Federal'}
