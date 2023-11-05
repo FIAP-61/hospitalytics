@@ -153,6 +153,8 @@ with tab1:
         
         with col2:
            st.markdown("""Texto explicando ...""")
+
+    st.divider()
     
 
 with tab2:
