@@ -1,0 +1,36 @@
+% Nulo	Código da variável	Nome	Descrição	N° Coluna Escolhida
+0,00%	Ano	ano	Ano de referência	
+0,00%	UF	uf	Unidade da Federação	
+66,22%	CAPITAL	capital	Capital	
+72,42%	RM_RIDE	rm_ride	"Região Metropolitana e Região Administrativa Integrada
+de Desenvolvimento"	
+0,00%	V1008	n_domicilio	Número de seleção do domicílio	
+0,00%	V1012	n_semana	Semana no mês	
+0,00%	V1013	mes_pesquisa	Mês da pesquisa	
+0,00%	V1016	n_entrevista_domicilio	Número da entrevista no domicílio	
+0,00%	Estrato	estrato	Estrato	
+0,00%	UPA	unidade_primaria_amostragem	UPA	
+0,00%	V1022	situacao_domicilio	Situação do domicílio	
+0,00%	V1023	tipo_area	Tipo de área	
+0,00%	V1030	projecao_populacao	Projeção da população	
+0,00%	V1031	peso_domicilio_pessoas_com_pos	Peso do domicílio e das pessoas	
+0,00%	V1032	peso_domicilio_pessoas_sem_pos	Peso do domicílio e das pessoas	
+0,00%	posest	dominios_projecao	Domínios de projeção	
+0,00%	A002	idade_morador	Idade do morador 	1
+0,00%	A003	sexo	Sexo	2
+97,07%	B0031	ficou_em_casa	Providência tomada para recuperar dos sintomas foi ficar em casa	3
+97,07%	B0033	auto_medicacao	Providência tomada  para recuperar dos sintomas foi comprar e/ou tomar  remédio por conta própria	4
+98,99%	B0041	buscou_atendimento_posto_ubs_esf	Local que buscou atendimento foi posto de saúde/Unidade básica de saúde /Equipe de Saúde da Família (médico, enfermeiro, técnico de enfermagem ou agente comunitário de saúde)	5
+98,99%	B0042	buscou_atendimento_ps_sus_upa	Local que buscou atendimento foi pronto socorro do SUS/UPA	6
+98,99%	B0043	buscou_atendimento_hospital_sus	Local que buscou atendimento foi hospital do SUS	7
+99,51%	B005	ficou_internado	Ao procurar o hospital, teve que ficar internado por um dia ou mais	8
+99,96%	B006	internado_risco	Durante a internação, foi sedado, entubado e colocado em respiração artificial com ventilador	9
+0,00%	B007	possui_plano_saude	Tem algum plano de saúde médico, seja particular, de empresa ou de órgão público	10
+0,00%	B0101	tem_diabetes	Algum médico já lhe deu o diagnóstico de diabetes?	11
+0,00%	B0102	tem_hipertensao	Algum médico já lhe deu o diagnóstico de hipertensão?	12
+0,00%	B0103	doenca_respiratoria	Algum médico já lhe deu o diagnóstico de asma/bronquite/enfisema/doenças respiratória crônica ou doença de pulmão?	13
+0,00%	B0104	doenca_coracao	Algum médico já lhe deu o diagnóstico de doenças do coração (infarto, angina, insuficiência cardíaca, arritmia)?	14
+68,31%	C011A	respondeu_valor_recebido	Quanto recebia (ou retirava) efetivamente em todos os seus trabalhos	15
+68,58%	C011A1	valores_recebidos_unidade	Recebia/retirava efetivamente em dinheiro	16
+68,58%	C011A11	valores_recebidos_faixa	Número da faixa do rendimento/retirada em dinheiro	17
+68,58%	C011A12	valores_recebidos_reais	Valor em dinheiro	18

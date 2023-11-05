@@ -50,6 +50,18 @@ with tab0:
         st.image("Images/databricks_connection.png")
 
 
+with tab1:
+    df_chosen_cols = pd.read_csv('chosen_cols.csv', sep='	')
+    st.markdown(
+        """
+        # Colunas Selecionadas 
+        Foi realizado uma análise dentre aproximadamente 150 colunas disponíveis dentro da base do PNAD Covid, e foram selecionadas as descritas na tabela a seguir.   
+        As colunas que estão numeradas em "Coluna Escolhida" são as que entram na contagem do limite de 20 colunas possíveis.  
+        """
+        )
+    st.dataframe(df_chosen_cols)
+
+
 if 'df_data' not in st.session_state:
     df1 = pd.read_csv('pnad_covid_1.csv', sep=',')
     df2 = pd.read_csv('pnad_covid_2.csv', sep=',')
