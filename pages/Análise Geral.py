@@ -6,6 +6,8 @@ import streamlit as st
 import plotly.express as px
 
 
+# Configurações da página
+st.set_page_config(page_title="Início", page_icon="🏥", layout="wide")
 st.header("Análise Geral do Comportamento da base de dados")
 
 # Layout do aplicativo
@@ -84,15 +86,3 @@ with tab1:
     fig.update_traces(marker_color='#3636DD')
     st.plotly_chart(fig, use_container_width=True)
 
-    # Número de homens
-    # Número de mulheres
-
-    # Quantidade de pessoas com os sintomas, cada sintoma um card
-    # Categorizar e explicar os grupos de risco
-
-    # Número das pessoas que são pacientes de risco
-    # N de pessoas com menos de 60 anos que sao paciente de risco
-    
-    # Dessas pessoas quantas tem convenio médico
-    # Quantos % das pessoas de risco tem convênio
-    # Mapa de Risco ou mapa com quantidade de pessoas

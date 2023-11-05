@@ -7,7 +7,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
-
+# Configurações da página
+st.set_page_config(page_title="Início", page_icon="🏥", layout="wide")
 st.header("Insights Extraídos")
 
 # Layout do aplicativo
@@ -35,30 +36,18 @@ with tab0:
         df_risk_group_60 = st.session_state.df_data[(st.session_state.df_data['idade_morador'] >= 60) & (st.session_state.df_data['risk_group'] == 1)]
         risk_group_60 = df_risk_group_60.groupby(['mes_pesquisa']).size().reset_index(name='contagem')['contagem'].mean()
         percentage_60 = (risk_group_60 / df_month_count['contagem'].mean()) * 100
-        st.metric(label="Qtd Média de Pessoas em Grupo de Risco com mais de 60 anos", value=f'{risk_group_60:.0f}', delta_color="off", delta=f'{percentage_60:.2f}%')
+        st.metric(label="Qtd Média de Pessoas em Grupo de Risco >= 60 anos", value=f'{risk_group_60:.0f}', delta_color="off", delta=f'{percentage_60:.2f}%')
 
     with col3:
-        st.metric(label="Qtd Média de Pessoas em Grupo de Risco com mais de 60 anos", value=f'{risk_group-risk_group_60:.0f}', delta_color="off", delta=f'{percentage-percentage_60:.2f}%')
+        st.metric(label="Qtd Média de Pessoas em Grupo de Risco < 60 anos", value=f'{risk_group-risk_group_60:.0f}', delta_color="off", delta=f'{percentage-percentage_60:.2f}%')
 
     st.divider()
-    col1, col2 = st.columns(2)
 
+    col1, col2 = st.columns(2)
     with col1:
-        # Histograma
-        # fig = px.histogram(st.session_state.df_data, x="risk_group", color="sexo", barmode='group')
-        # fig.update_layout(
-        #     title_text='Distribuição de Grupos de Risco por Sexo',
-        #     xaxis_title_text='Grupo de Risco',
-        #     yaxis_title_text='Contagem',
-        #     bargap=0.2,
-        #     bargroupgap=0.1
-        # )
-        # # Atualiza as cores e a legenda
-        # cores = {'1': '#3636DD', '2': '#282882'}
-        # fig.for_each_trace(lambda trace: trace.update(marker=dict(color=cores[trace.name])))
-        # fig.for_each_trace(lambda trace: trace.update(name = 'Masculino' if trace.name == '1' else 'Feminino'))
-        # fig.update_xaxes(tickvals=[0, 1], ticktext=['Não', 'Sim'])
-        # st.plotly_chart(fig, use_container_width=True)
+        st.markdown("""Texto explicando categorização do grupo de risco e o gráfico...""")
+
+    with col2:
 
         fig = px.histogram(st.session_state.df_data, x="risk_group", color="sexo", facet_col="mes_pesquisa", barmode='group')
         fig.update_layout(
@@ -77,10 +66,6 @@ with tab0:
         fig.layout.annotations[2]['text'] = f'Novembro'
         st.plotly_chart(fig, use_container_width=True)
 
-
-    with col2:
-        st.markdown("""Texto explicando categorização do grupo de risco e o gráfico...""")
-
     st.divider()
 
     col1, col2= st.columns(2)
@@ -92,7 +77,7 @@ with tab0:
         fig.update_traces(textfont_size=20)
         fig.update_layout(title_text="Pessoas que tiveram sintomas mas permaneceram em casa")
         st.plotly_chart(fig, use_container_width=True)
-    
+   
     with col2:
         st.markdown("""Texto Explicando.....""")
     
@@ -133,7 +118,6 @@ with tab1:
     st.divider()
         
     col1, col2 = st.columns(2)
-
     with col1:
         df_grouped = st.session_state.df_data.groupby(['mes_pesquisa', 'possui_plano_saude']).size().reset_index(name='contagem')
 
@@ -156,10 +140,40 @@ with tab1:
 
     st.divider()
     
+    col1, col2 = st.columns(2)
+    with col1:
+        st.markdown("""Texto explicando ...""")
+
+    with col2:
+        risk_healthcare = st.session_state.df_data[st.session_state.df_data['risk_group'] == 1]['possui_plano_saude'].value_counts()
+        risk_healthcare_title = ['Sem plano de saúde', 'Com plano de saúde', 'Ignorado']
+
+        fig = px.pie(values=risk_healthcare, names=risk_healthcare_title, hole=.3)
+        fig.update_traces(textfont_size=20)
+        fig.update_layout(title_text="Distribuição de Plano de Saúde em Pessoas que estão no Grupo de Risco")
+        st.plotly_chart(fig, use_container_width=True)
+
+    st.divider()
+
+    df_risk_values = st.session_state.df_data[(st.session_state.df_data['risk_group'] == 1) & (st.session_state.df_data['possui_plano_saude'] == 2)]
+    fig = px.histogram(df_risk_values, x="valores_recebidos_faixa", color="risk_group", barmode='group')
+    fig.update_layout(bargap=0.1)
+    fig.update_layout(
+        title_text='Distribuição da Renda Mensal de Pessoas que não tem Plano de Saúde e é de Grupo de Risco',
+        showlegend=False
+    )
+    fig.update_xaxes(
+        ticktext = ["0 - 100", "101 - 300", "301 - 600", "601 - 800", "801 - 1.600", "1.601 - 3.000", "3.001 - 10.000", "10.001 - 50.000"],
+        tickvals = ["0", "1", "2", "3", "4", "6", "7"],
+        title_text = "Faixa de Valores Recebidos por Mês em R$)"
+    )
+    fig.update_yaxes(title_text='Número de Pessoas')
+    st.plotly_chart(fig, use_container_width=True)
+
+
 
 with tab2:
     col1, col2= st.columns(2)
-    
     with col1:
         total = st.session_state.df_data[['buscou_atendimento_hospital_sus', 'buscou_atendimento_ps_sus_upa', 'buscou_atendimento_posto_ubs_esf']]
         total = total[total == 1].sum().sum()
