@@ -7,7 +7,9 @@ st.write("# Hospitalytics: Explorando os dados do PNAD Covid 🏥")
 
 st.markdown(
     """
-O FinAlytics é uma plataforma interativa de análise e modelos de dados que oferece análises preditivas sobre os dados da IBOVESPA (Bolsa de Valores). Nossa aplicação web, construída com Streamlit, reúne informações abrangentes de séries temporais e visualizações intuitivas para facilitar a compreensão e a tomada de decisões estratégicas sobre o fechamento da base.
+
+Bem-vindo ao Hospitalytics, sua bússola analítica na era pós-pandêmica. Enquanto o mundo continua a navegar pelas consequências da COVID-19, a capacidade de entender e prever as tendências de saúde pública nunca foi tão crucial. Hospitalytics é uma plataforma dedicada a decifrar o comportamento da pandemia usando dados do PNAD-COVID-19 do IBGE, equipando profissionais de saúde com insights essenciais para antecipar e combater ondas futuras de infecções. Mergulhe conosco na jornada através dos dados, onde cada gráfico revela uma história, cada número conta sobre vidas e cada insight pode ser a chave para salvar mais amanhãs.
+ Nossa aplicação web, construída com Streamlit, reúne informações abrangentes de séries temporais e visualizações intuitivas para facilitar a compreensão e a tomada de decisões estratégicas sobre o fechamento da base.
 
 Explore a característica dos dados e os modelos preditivos que fornecem dados sobre a evolução das cotações diárias em valores, os gráficos e outros aspectos relevantes do modelo. Navegue pelos diferentes painéis para descobrir tendências, identificar as principais variações e compreender o nível de confiança de cada simulação que melhor se aplica à análise.
 
