@@ -19,22 +19,6 @@ tab0, tab1, tab2 = st.tabs(
         "Preferências de Atendimento",
     ]
 )
-st.subheader("Perfilando o Risco: Quem é Mais Vulnerável?")
-st.markdown(
-    """
-A identificação dos grupos de risco é uma parte vital da gestão de pandemias. A análise dos dados indica a porcentagem da população que pertence a grupos de risco específicos, permitindo priorizar recursos e estratégias de intervenção para aqueles que mais precisam.
-"""
-)
-
-st.subheader("Desigualdades em Saúde: O Conto dos Planos")
-st.markdown(
-    """A posse de um plano de saúde é um fator determinante na qualidade do atendimento recebido durante a pandemia. Os dados mostram que 77,33% das pessoas não possuíam plano de saúde, indicando uma forte dependência dos serviços públicos. Essas estatísticas são fundamentais para compreender como expandir e melhorar o acesso à saúde em momentos críticos."""
-)
-
-st.subheader("Preferências de Atendimento: As Escolhas Durante a Pandemia")
-st.markdown(
-    """Quando confrontadas com a necessidade de cuidados médicos durante a pandemia, as preferências da população fornecem insights valiosos sobre a confiança nos diferentes níveis do sistema de saúde. Os dados do PNAD-COVID-19 iluminam estas escolhas, sugerindo áreas para melhoria e adaptação em preparação para futuras crises de saúde."""
-)
 
 # Dados
 if "df_data" not in st.session_state:
@@ -99,8 +83,11 @@ with tab0:
 
     col1, col2 = st.columns(2)
     with col1:
+        st.subheader("Perfilando o Risco: Quem é Mais Vulnerável?")
         st.markdown(
-            """Texto explicando categorização do grupo de risco e o gráfico..."""
+            """
+        A identificação dos grupos de risco é uma parte vital da gestão de pandemias. A análise dos dados indica a porcentagem da população que pertence a grupos de risco específicos, permitindo priorizar recursos e estratégias de intervenção para aqueles que mais precisam.
+        """
         )
 
     with col2:
@@ -252,7 +239,10 @@ with tab1:
         st.plotly_chart(fig, use_container_width=True)
 
         with col2:
-            st.markdown("""Texto explicando ...""")
+            st.subheader("Desigualdades em Saúde: O Conto dos Planos")
+            st.markdown(
+                """A posse de um plano de saúde é um fator determinante na qualidade do atendimento recebido durante a pandemia. Os dados mostram que 77,33% das pessoas não possuíam plano de saúde, indicando uma forte dependência dos serviços públicos. Essas estatísticas são fundamentais para compreender como expandir e melhorar o acesso à saúde em momentos críticos."""
+            )
 
     st.divider()
 
@@ -371,12 +361,18 @@ with tab2:
         )
     st.plotly_chart(fig, use_container_width=True)
 
-    st.markdown("""Texto explicando gráfico acima...""")
+    st.subheader("Preferências de Atendimento: As Escolhas Durante a Pandemia")
+    st.markdown(
+        """Quando confrontadas com a necessidade de cuidados médicos durante a pandemia, as preferências da população fornecem insights valiosos sobre a confiança nos diferentes níveis do sistema de saúde. Os dados do PNAD-COVID-19 iluminam estas escolhas, sugerindo áreas para melhoria e adaptação em preparação para futuras crises de saúde."""
+    )
 
     st.divider()
 
     col1, col2 = st.columns(2)
     with col1:
+        st.markdown("""Texto Explicando.....""")
+
+    with col2:
         stayed_hospitalized = st.session_state.df_data[
             st.session_state.df_data["ficou_internado"] != 9
         ]["ficou_internado"].value_counts()
@@ -393,16 +389,10 @@ with tab2:
         fig.update_layout(title_text="Pessoas que tiveram que ser internadas")
         st.plotly_chart(fig, use_container_width=True)
 
-    with col2:
-        st.markdown("""Texto Explicando.....""")
-
     st.divider()
 
     col1, col2 = st.columns(2)
     with col1:
-        st.markdown("""Texto Explicando.....""")
-
-    with col2:
         risk_hospitalized = st.session_state.df_data[
             st.session_state.df_data["internado_risco"] != 9
         ]["internado_risco"].value_counts()
@@ -414,3 +404,6 @@ with tab2:
             title_text="Pessoas que durante a internação, foram sedadas, entubadas e colocadas em respiração artificial com ventilador"
         )
         st.plotly_chart(fig, use_container_width=True)
+
+    with col2:
+        st.markdown("""Texto Explicando.....""")
