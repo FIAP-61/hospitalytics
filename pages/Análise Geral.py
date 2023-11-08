@@ -10,20 +10,8 @@ import plotly.express as px
 st.set_page_config(page_title="Início", page_icon="🏥", layout="wide")
 st.header("Análise Geral do Comportamento da base de dados")
 
-st.subheader("Decifrando a Demografia: Idades em Foco")
-
-st.markdown(
-    """A pandemia da COVID-19 afetou todas as faixas etárias, mas não de forma igual. A análise de idade nos dados do PNAD-COVID-19 revela uma idade média de 36,98 anos, mas isso é apenas o início da história. Investigamos como a distribuição etária pode influenciar a susceptibilidade ao vírus e a gravidade dos casos, fornecendo um panorama essencial para preparação e resposta a futuros surtos."""
-)
-
 # Layout do aplicativo
 tab0, tab1 = st.tabs(["Análise de Respostas", "Análise da Idade"])
-
-st.subheader("Dados Além do Gênero: Entendendo as Diferenças")
-st.markdown(
-    """As respostas no PNAD-COVID-19 são mais que números; elas refletem as diferenças nas experiências de homens e mulheres durante a pandemia. Com uma distribuição quase equânime entre os gêneros, essas informações são cruciais para compreender as nuances no impacto da pandemia e como diferentes políticas de saúde podem ser moldadas para atender às necessidades específicas de cada grupo.
-"""
-)
 
 # Dados
 if "df_data" not in st.session_state:
@@ -85,6 +73,15 @@ with tab0:
         st.metric(
             label="N° de Homens", value=gen_count[1], delta_color="off", delta="47,9%"
         )
+    
+    st.divider()
+
+    st.subheader("Dados Além do Gênero: Entendendo as Diferenças")
+    
+    st.markdown(
+        """As respostas no PNAD-COVID-19 são mais que números; elas refletem as diferenças nas experiências de homens e mulheres durante a pandemia. Com uma distribuição quase equânime entre os gêneros, essas informações são cruciais para compreender as nuances no impacto da pandemia e como diferentes políticas de saúde podem ser moldadas para atender às necessidades específicas de cada grupo.
+    """
+    )
 
     # Gráfico de Barras
     counts = st.session_state.df_data["uf"].value_counts().reset_index()
@@ -144,6 +141,14 @@ with tab1:
             delta_color="off",
             delta=f"{percentage:.2f}%",
         )
+
+    st.divider()
+
+    st.subheader("Decifrando a Demografia: Idades em Foco")
+
+    st.markdown(
+        """A pandemia da COVID-19 afetou todas as faixas etárias, mas não de forma igual. A análise de idade nos dados do PNAD-COVID-19 revela uma idade média de 36,98 anos, mas isso é apenas o início da história. Investigamos como a distribuição etária pode influenciar a susceptibilidade ao vírus e a gravidade dos casos, fornecendo um panorama essencial para preparação e resposta a futuros surtos."""
+    )
 
     fig = px.histogram(st.session_state.df_data, x="idade_morador")
 
