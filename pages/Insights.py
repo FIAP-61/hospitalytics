@@ -87,6 +87,8 @@ with tab0:
         st.markdown(
             """
         A identificação dos grupos de risco é uma parte vital da gestão de pandemias. A análise dos dados indica a porcentagem da população que pertence a grupos de risco específicos, permitindo priorizar recursos e estratégias de intervenção para aqueles que mais precisam.
+        O paciente foi considerado parte do grupo de risco caso se encaixasse em uma das seguintes condições:
+        Ter mais de 60 anos, se teve algum diagnóstico de diabetes, hipertensão, asma, bronquite, enfisema, doenças respiratória crônica, doença de pulmão ou alguma doença no coração.
         """
         )
 
@@ -137,13 +139,17 @@ with tab0:
         st.plotly_chart(fig, use_container_width=True)
 
     with col2:
-        st.markdown("""Texto Explicando.....""")
+        st.markdown(
+            """Este gráfico destaca uma realidade alarmante: muitos dos que manifestaram sintomas optaram por permanecer em casa, potencialmente devido à falta de acesso a cuidados de saúde ou por medo de exposição em instalações médicas. Este comportamento pode ter implicações significativas para a disseminação do vírus e a identificação de casos em tempo hábil."""
+        )
 
     st.divider()
 
     col1, col2 = st.columns(2)
     with col1:
-        st.markdown("""Texto Explicando.....""")
+        st.markdown(
+            """A automedicação durante a pandemia é um sinal de alerta capturado neste gráfico, refletindo o possível desespero ou desinformação enfrentados pela população. O número de indivíduos que escolheram se auto medicar aponta para a necessidade de melhor comunicação sobre tratamentos seguros e acessíveis."""
+        )
 
     with col2:
         auto_medication = st.session_state.df_data[
@@ -248,7 +254,9 @@ with tab1:
 
     col1, col2 = st.columns(2)
     with col1:
-        st.markdown("""Texto explicando ...""")
+        st.markdown(
+            """Analisando a interseção entre os grupos de risco e a posse de planos de saúde, este gráfico revela quão bem os mais vulneráveis estão equipados para enfrentar desafios de saúde. A distribuição é um indicador crítico da capacidade de nossa sociedade de proteger seus membros mais propensos a complicações graves da COVID-19."""
+        )
 
     with col2:
         risk_healthcare = st.session_state.df_data[
@@ -370,7 +378,9 @@ with tab2:
 
     col1, col2 = st.columns(2)
     with col1:
-        st.markdown("""Texto Explicando.....""")
+        st.markdown(
+            """Este gráfico nos mostra o número de pacientes que necessitaram de internação, uma métrica direta da severidade dos casos e da carga sobre os hospitais. A contagem reflete a pressão colocada sobre as instalações de saúde e pode ajudar a calibrar a resposta do sistema de saúde para acomodar ondas de pacientes críticos em potenciais futuras crises."""
+        )
 
     with col2:
         stayed_hospitalized = st.session_state.df_data[
@@ -406,4 +416,6 @@ with tab2:
         st.plotly_chart(fig, use_container_width=True)
 
     with col2:
-        st.markdown("""Texto Explicando.....""")
+        st.markdown(
+            """Este gráfico detalha a gravidade dos procedimentos médicos enfrentados por pacientes internados, com foco naqueles que necessitaram de sedação, intubação e assistência ventilatória. É um indicativo sombrio da luta pela vida enfrentada por muitos e sublinha a importância de recursos médicos avançados e equipe treinada para enfrentar situações de emergência."""
+        )
