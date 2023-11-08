@@ -302,6 +302,11 @@ with tab1:
     fig.update_yaxes(title_text="Número de Pessoas")
     st.plotly_chart(fig, use_container_width=True)
 
+    st.markdown(
+        """
+    Este gráfico destaca a correlação entre renda mensal e a falta de plano de saúde entre aqueles em grupos de risco. A distribuição de renda reflete desigualdades subjacentes que podem limitar o acesso a cuidados de saúde de qualidade e necessários, especialmente para aqueles que já enfrentam um risco elevado de doenças graves.
+    """
+    )
 
 with tab2:
     col1, col2 = st.columns(2)
