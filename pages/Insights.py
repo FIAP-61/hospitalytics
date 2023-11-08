@@ -101,7 +101,7 @@ with tab0:
             barmode="group",
         )
         fig.update_layout(
-            title_text="Distribuição de Grupos de Risco por Sexo",
+            title_text="Distribuição de Grupos de Risco por gênero",
             # xaxis_title_text='',
             yaxis_title_text="Contagem",
             bargap=0.2,
