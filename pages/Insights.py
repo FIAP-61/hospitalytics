@@ -46,7 +46,7 @@ with tab0:
         ].mean()
         percentage = (risk_group / df_month_count["contagem"].mean()) * 100
         st.metric(
-            label="Qtd Média de Pessoas em Grupo de Risco durante os meses",
+            label="Média de Pessoas em Grupo de Risco durante os meses",
             value=f"{risk_group:.0f}",
             delta_color="off",
             delta=f"{percentage:.2f}%",
@@ -65,7 +65,7 @@ with tab0:
         )
         percentage_60 = (risk_group_60 / df_month_count["contagem"].mean()) * 100
         st.metric(
-            label="Qtd Média de Pessoas em Grupo de Risco >= 60 anos",
+            label="Média de Pessoas em Grupo de Risco >= 60 anos",
             value=f"{risk_group_60:.0f}",
             delta_color="off",
             delta=f"{percentage_60:.2f}%",
@@ -73,7 +73,7 @@ with tab0:
 
     with col3:
         st.metric(
-            label="Qtd Média de Pessoas em Grupo de Risco < 60 anos",
+            label="Média de Pessoas em Grupo de Risco < 60 anos",
             value=f"{risk_group-risk_group_60:.0f}",
             delta_color="off",
             delta=f"{percentage-percentage_60:.2f}%",
