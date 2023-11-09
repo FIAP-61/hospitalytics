@@ -42,7 +42,7 @@ with tab0:
     st.markdown(
         """
     ### Conexão com os Dados
-    Por uma limitação do databricks community não é possível criar um "personal access token" para a consulta da tabela pelo streamlit, portanto utilizaremos a exportação dessa tabela para o streamlit ingerir os dados, caso contrário não seria possível conectar ao databricks pelo código na imagem abaixo.
+    Por uma limitação do databricks community não é possível criar um "personal access token" para a consulta da tabela pelo streamlit, portanto utilizaremos a exportação dessa tabela para o streamlit ingerir os dados, caso contrário seria possível conectar ao databricks pelo código na imagem abaixo.
     """
     )
     with st.expander("Clique para ver o código de conexão"):
