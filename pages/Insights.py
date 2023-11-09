@@ -47,7 +47,7 @@ with tab0:
         percentage = (risk_group / df_month_count["contagem"].mean()) * 100
         st.metric(
             label="Média de Pessoas em Grupo de Risco durante os meses",
-            value=f"{risk_group:.0f}",
+            value='{:,.0f}'.format(risk_group).replace(',', '.'),
             delta_color="off",
             delta=f"{percentage:.2f}%",
         )
@@ -66,7 +66,7 @@ with tab0:
         percentage_60 = (risk_group_60 / df_month_count["contagem"].mean()) * 100
         st.metric(
             label="Média de Pessoas em Grupo de Risco >= 60 anos",
-            value=f"{risk_group_60:.0f}",
+            value='{:,.0f}'.format(risk_group_60).replace(',', '.'),
             delta_color="off",
             delta=f"{percentage_60:.2f}%",
         )
@@ -74,9 +74,9 @@ with tab0:
     with col3:
         st.metric(
             label="Média de Pessoas em Grupo de Risco < 60 anos",
-            value=f"{risk_group-risk_group_60:.0f}",
+            value='{:,.0f}'.format(risk_group - risk_group_60).replace(',', '.'),
             delta_color="off",
-            delta=f"{percentage-percentage_60:.2f}%",
+            delta=f"{percentage - percentage_60:.2f}%",
         )
 
     st.divider()
@@ -185,7 +185,7 @@ with tab1:
         percentage = (health_insurance_mean / df_month_count["contagem"].mean()) * 100
         st.metric(
             label="Média de Pessoas com Plano de Saúde nos últimos 3 meses",
-            value=f"{health_insurance_mean:.0f}",
+            value='{:,.0f}'.format(health_insurance_mean).replace(',', '.'),
             delta_color="off",
             delta=f"{percentage:.2f}%",
         )
@@ -199,7 +199,7 @@ with tab1:
         ) * 100
         st.metric(
             label="Média de Pessoas Sem Plano de Saúde nos últimos 3 meses",
-            value=f"{not_health_insurance_mean:.0f}",
+            value='{:,.0f}'.format(not_health_insurance_mean).replace(',', '.'),
             delta_color="off",
             delta=f"{percentage_60:.2f}%",
         )
@@ -322,7 +322,7 @@ with tab2:
         percentage = (total / st.session_state.df_data.shape[0]) * 100
         st.metric(
             label="Total de Pessoas que Buscaram Atendimento em 3 Meses",
-            value=f"{total:.0f}",
+            value='{:,.0f}'.format(total).replace(',', '.'),
             delta_color="off",
             delta=f"{percentage:.2f}%",
         )

@@ -59,19 +59,19 @@ with tab0:
     with col1:
         st.metric(
             label="Quantidade de Respostas",
-            value=st.session_state.df_data.shape[0],
+            value='{:,}'.format(st.session_state.df_data.shape[0]).replace(',', '.'),
             delta_color="off",
             delta="100%",
         )
 
     with col2:
         st.metric(
-            label="N° de Mulheres", value=gen_count[2], delta_color="off", delta="52,1%"
+            label="N° de Mulheres", value='{:,}'.format(gen_count[2]).replace(',', '.'), delta_color="off", delta="52,1%"
         )
 
     with col3:
         st.metric(
-            label="N° de Homens", value=gen_count[1], delta_color="off", delta="47,9%"
+            label="N° de Homens", value='{:,}'.format(gen_count[1]).replace(',', '.'), delta_color="off", delta="47,9%"
         )
     
     st.divider()
@@ -113,7 +113,7 @@ with tab1:
     with col1:
         st.metric(
             label="Idade Média",
-            value=round(st.session_state.df_data["idade_morador"].mean(), 2),
+            value='{:,}'.format(round(st.session_state.df_data["idade_morador"].mean(), 2)).replace('.', ','),
             delta_color="off",
             delta="100%",
         )
@@ -125,7 +125,7 @@ with tab1:
         percentage = (elders / st.session_state.df_data.shape[0]) * 100
         st.metric(
             label="Quantidade Pessoas com mais de 60 anos",
-            value=elders,
+            value='{:,}'.format(elders).replace(',', '.'),
             delta_color="off",
             delta=f"{percentage:.2f}%",
         )
@@ -137,7 +137,7 @@ with tab1:
         percentage = (elders / st.session_state.df_data.shape[0]) * 100
         st.metric(
             label="Quantidade Pessoas com menos de 60 anos",
-            value=elders,
+            value='{:,}'.format(elders).replace(',', '.'),
             delta_color="off",
             delta=f"{percentage:.2f}%",
         )
